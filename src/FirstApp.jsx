@@ -1,17 +1,26 @@
+import PropTypes from 'prop-types';
 
-const newMessage = () => {
-  return 'soy micke';
-}
+export const FirstApp = ( {title, subTitle, name}) => {
 
-export const FirstApp = () => {
-  
-  
+  if( !title ) {
+    throw new Error('El titulo es necesario');
+  }
+
   return (
     <>
-      <h1> { newMessage() } </h1>
-      <p>Soy un subtitulo</p>
+      <h1> {title} </h1>
+      <p> {subTitle} </p>
+      <p> {name} </p>
     </>
   )
 }
+FirstApp.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.number
+}
 
-
+FirstApp.defaultProps = {
+  title: 'No hay titulo',
+  subTitle: 'No hay subtitulo',
+  name: 'Miguel Cruz'
+}
